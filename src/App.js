@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { useReducer, useState } from "react";
+import RiverInformation from "./components/RiverInformation.js/RiverInformation";
 
 function App() {
+  const [river, setRiver] = useState("nile");
+  const [show, toggle] = useReducer((state) => !state, true);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>God is Good</h1>
+      <div>
+        <button onClick={toggle}>Toggle Details</button>
+      </div>
+      <button onClick={() => setRiver("nile")}>Nile</button>
+      <button onClick={() => setRiver("amazon")}>Amazon</button>
+      <button onClick={() => setRiver("yangtze")}>Yangtze</button>
+      <button onClick={() => setRiver("mississippi")}>Mississippi</button>
+      {show && <RiverInformation name={river} />}
     </div>
   );
 }
